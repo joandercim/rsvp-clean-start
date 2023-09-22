@@ -1,0 +1,150 @@
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:ital,wght@0,200;0,300;0,400;0,500;1,100&family=Roboto&display=swap');
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+}
+
+body {
+    background-color: rgb(44, 44, 44);
+    font-family: 'Montserrat';
+    color: antiquewhite;
+}
+
+h4 {
+    margin-bottom: 3rem;
+    line-height: 1.5;
+    font-weight: 300;
+}
+.container {
+    max-width: 1000px;
+    display: flex;
+    flex-flow: column nowrap;
+    align-items: center;
+    justify-content: flex-start;
+    margin: 50px auto;
+    padding: 40px;
+    border-radius: 15px;
+    background-color: rgb(52, 52, 52);
+    filter: drop-shadow(10px 10px 10px rgba(0, 0, 0, 0.05));
+    text-align: center;
+    width: 90%;
+}
+
+h1 {
+    margin: 1rem 1rem;
+    font-size: 2rem;
+}
+
+form {
+    text-align: left;
+    display: flex;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
+}
+
+.form-fields {
+    text-emphasis: left;
+}
+
+input#name {
+    margin: 10px 0;
+}
+
+input[type="submit"] {
+    padding: 5px;
+    margin: 10px 0;
+}
+
+input[type="radio"] {
+    margin: 5px; 
+}
+
+.guests {
+    width: 100%;
+}
+
+.guest-container {
+    width: 50%;
+    margin: 10px auto;
+    text-align: center;
+    border-radius: 8px;
+    background-color: rgba(0, 0, 0, 0.306);
+    height: 45px;
+    line-height: 1;
+    font-size: 1rem;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.guest-container h3 {
+    font-size: .9rem
+}
+
+.facts {
+    display: flex;
+    flex-flow: row wrap;
+    width: 80%;
+    place-content: center space-around;
+    gap: 20px;
+}
+
+.square {
+    height: 15rem;
+    width: 15rem;
+    border: 2px solid rgba(250, 235, 215, 0.457);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    border-radius: 50%;
+    margin-top: 2.4rem;
+    margin-bottom: 40px;
+}
+
+.square h2 {
+    font-size: 6rem;
+    margin-top: -10px;
+}
+
+#input-name {
+    text-align: center;
+}
+
+input[type="text"] {
+    outline-style: none;
+    border-style: none;
+    border: 1px solid antiquewhite;
+    padding: 5px;
+    border-radius: 8px;
+    text-align: center;
+    color: black;
+    font-family: 'Montserrat';
+    font-weight: 600;
+}
+
+button {
+    padding: .75rem;
+    background-color: transparent;
+    border-style: none;
+    border-radius: 8px;
+    border: 1px solid rgba(255, 255, 255, 0.646);
+    margin: .7rem 0 1rem;
+    cursor: pointer;
+    color: antiquewhite;
+    font-family: 'Montserrat';
+    text-transform: uppercase;
+}
+
+.fa-xmark {
+    color: red;
+    position: absolute;
+    right: 20px;
+    cursor: pointer;
+    visibility: hidden;
+}

@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/style.css">
+    <script src="https://kit.fontawesome.com/4cb68bf540.js" crossorigin="anonymous" defer></script>
+    <title>Anmälan After School</title>
+</head>
+<body>
+  <div class="container">
+    <img src="https://catalog.pinchos.se/android-chrome-192x192.png" alt="pinchos logo">
+    <h1>Anmälan till Pinchos!</h1>
+    <h4 id="countdown">Fyll i ditt namn för att anmäla dig. <br>Anmälan stränger om 62 timmar och 21 minuter</h2>
+
+    <form action="/posts" id="form" method="post">
+        <div class="form-fields">
+          <div id="input-name">
+            <label for="name">Fyll i ditt namn</label><br>
+            <input type="text" name="name" id="name" required>
+          </div>
+            <!-- <label for="vegan">Veganskt</label>
+            <input type="radio" name="foodType" value="vegan" id="vegan" required>
+            <label for="vegetarian">vegetarian</label>
+            <input type="radio" name="foodType" value="vegetarian" id="vegetarian">
+            <label for="meat">Kött</label>
+            <input type="radio" name="foodType" value="meat" id="meat"> -->
+        </div>
+        <button type="submit"id="submit-btn">Skicka anmälan</button>
+    </form>
+    <div class="guests"></div>
+    <div class="facts">
+      <div class="count-box square">
+        <h2 id="guest-count">12</h2>
+        <p>anmälda gäster</p>
+      </div>
+    </div>
+    <p>Om du ångrat dig anmält dig men ångrat dig, kontakta Joacim på discord eller i teams.</p>
+  </div>  
+</body>
+<script src="./js/app.js" defer></script>
+</html>
+
