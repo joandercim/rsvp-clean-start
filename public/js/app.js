@@ -4,18 +4,20 @@ async function getNames() {
   return guests;
 }
 
-async function displayNames() {
+async function renderNames() {
+  document.querySelector('.guests').innerHTML = '';
   const guests = await getNames();
 
   guests.forEach((guest) => {
-    const { username } = guest;
-
+    const { username, _id } = guest;
+    
     const xmark = document.createElement('i');
     xmark.classList.add('fa-solid');
     xmark.classList.add('fa-xmark');
 
     const div = document.createElement('div');
     div.classList.add('guest-container');
+    div.id = _id;
 
     const h3 = document.createElement('h3');
     h3.id = 'guest';
@@ -23,8 +25,9 @@ async function displayNames() {
 
     document.querySelector('.guests').appendChild(div);
     div.appendChild(h3);
-    div.appendChild(xmark);
-
+    div.appendChild(xmark)
+    const userInStorage = localStorage.getItem('userName');
+    userInStorage === `"${username}"` ? xmark.style.visibility = 'visible' : xmark.style.visibility = 'hidden';
     countGuests(guests.length);
   });
 
@@ -38,13 +41,15 @@ function setUserName(e) {
 }
 
 async function countGuests(numberOfGuests) {
-  const numberEl = (document.getElementById('guest-count').textContent =
-    numberOfGuests);
+  const numberEl = document.getElementById('guest-count');
+
+  numberEl === 0 ? numberEl.textContent = '0' : numberEl.textContent =
+  numberOfGuests;
 }
 
 async function chkAdmin() {
   const xmarks = document.querySelectorAll('.fa-xmark');
-  if (localStorage.getItem('admin') !== 'admin') {
+  if (localStorage.getItem('admin') === 'admin') {
     xmarks.forEach((icon) => (icon.style.visibility = 'visible'));
   }
 }
@@ -76,7 +81,10 @@ function updateCountDown() {
 function findUser(e) {
   if (e.target.classList.contains('fa-xmark')) {
     e.stopImmediatePropagation();
-    const username = e.target.previousElementSibling.textContent;
+    deleteOwnName(e.target.parentElement.id);
+    setTimeout(() => {
+      renderNames();
+    }, 199);
   } 
 }
 
@@ -99,7 +107,7 @@ async function deleteOwnName(id) {
         const data = await response.json();
         console.log('Delete Complete!')
     } catch (error) {
-        console.log(first)
+        console.log(error)
     }
 }
 
@@ -107,7 +115,7 @@ document.querySelector('form').addEventListener('submit', setUserName);
 document.querySelector('.guests').addEventListener('click', findUser);
 
 function init() {
-  displayNames();
+  renderNames();
   const countdownInterval = setInterval(() => {
     updateCountDown();
   }, 1000);
