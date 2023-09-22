@@ -148,3 +148,34 @@ button {
     cursor: pointer;
     visibility: hidden;
 }
+
+@media (max-width: 995px) {
+    .square {
+        height: 12rem;
+        width: 12rem;
+    }
+
+    .square h2 {
+        font-size: 4rem;
+    }
+}
+
+@media (max-width: 767px) {
+    form {
+        width: 100%;
+        margin-bottom: 20px;
+    }
+
+    .guest-container {
+        width: 100%;
+    }
+
+    .square {
+        width: 10rem;
+        height: 10rem;
+    }
+
+    .square p {
+        font-size: .8rem;
+    }
+}
