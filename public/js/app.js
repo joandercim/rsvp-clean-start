@@ -73,20 +73,17 @@ function updateCountDown() {
     );
     const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-    let daysAndHours;
 
     if (days !== 0) {
-      daysAndHours = (days * 24) + hours;
       countdownElement.innerHTML = `Fyll i ditt namn för att anmäla dig. <br>
-        Anmälan stränger om ${daysAndHours} timmar och ${minutes} minuter`;
+        Anmälan stränger om ${days} dagar, ${hours} timmar och ${minutes} minuter`;
     } else if (days === 0 && hours > 1) {
-      daysAndHours = hours;
       countdownElement.innerHTML = `Fyll i ditt namn för att anmäla dig. <br>
-        Anmälan stränger om ${daysAndHours} timmar och ${minutes} minuter`;
+        Anmälan stränger om ${hours} timmar och ${minutes} minuter`;
     } else if (days === 0 && hours === 1) {
       daysAndHours = hours;
       countdownElement.innerHTML = `Fyll i ditt namn för att anmäla dig. <br>
-        Anmälan stränger om ${daysAndHours} timma och ${minutes} minuter`;
+        Anmälan stränger om ${hours} timma och ${minutes} minuter`;
     } else if (hours === 0) {
       countdownElement.innerHTML = `Fyll i ditt namn för att anmäla dig. <br>
         Anmälan stränger om ${minutes} minuter`;
@@ -148,6 +145,7 @@ document.querySelector('.guests').addEventListener('click', findUser);
 
 function init() {
   renderNames();
+  updateCountDown();
   const countdownInterval = setInterval(() => {
     updateCountDown();
   }, 1000);
