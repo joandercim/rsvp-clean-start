@@ -162,7 +162,7 @@ button {
     img {
         scale: .8;
     }
-}
+} 
 
 @media (max-width: 767px) {
     form {
