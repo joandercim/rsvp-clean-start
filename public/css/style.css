@@ -182,4 +182,9 @@ button {
     .square p {
         font-size: .8rem;
     }
+
+    .container {
+        margin-top: 20px;
+        padding-top: 10px;
+    }
 }
