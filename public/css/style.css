@@ -149,6 +149,10 @@ button {
     visibility: hidden;
 }
 
+.subtle {
+    font-size: .8rem;
+}
+
 @media (max-width: 995px) {
     .square {
         height: 12rem;
@@ -184,8 +188,8 @@ button {
     }
 
     .container {
-        margin-top: 20px;
-        padding-top: 10px;
+        margin: 20px;
+        padding: 10px;
     }
 
     h1 {
