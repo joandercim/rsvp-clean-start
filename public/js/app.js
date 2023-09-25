@@ -76,7 +76,7 @@ function updateCountDown() {
 
     if (days !== 0) {
       countdownElement.innerHTML = `Fyll i ditt namn för att anmäla dig. <br>
-        Anmälan stränger om ${days} dagar, ${hours} timmar och ${minutes} minuter`;
+        Anmälan stränger om ${days} dag, ${hours} timmar och ${minutes} minuter`;
     } else if (days === 0 && hours > 1) {
       countdownElement.innerHTML = `Fyll i ditt namn för att anmäla dig. <br>
         Anmälan stränger om ${hours} timmar och ${minutes} minuter`;
@@ -89,22 +89,6 @@ function updateCountDown() {
         Anmälan stränger om ${minutes} minuter`;
     }
   }
-
-  // if (timeDifference <= 0) {
-  //   countdownElement.textContent = 'Tiden är ute!';
-  // } else {
-  //   const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-  //   const hours = Math.floor(
-  //     (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
-  //   );
-  //   const minutes = Math.floor(
-  //     (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
-  //   );
-  //   const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
-
-  //   countdownElement.innerHTML = `Fyll i ditt namn för att anmäla dig. <br>
-  //       Anmälan stränger om ${days} dagar, ${hours} timmar, ${minutes} minuter och ${seconds} sekunder.`;
-  // }
 }
 
 function findUser(e) {
