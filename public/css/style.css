@@ -141,6 +141,11 @@ button {
     text-transform: uppercase;
 }
 
+button:hover {
+    background-color: rgba(250, 235, 215, 0.709);
+    color: black;
+}
+
 .fa-xmark {
     color: red;
     position: absolute;
