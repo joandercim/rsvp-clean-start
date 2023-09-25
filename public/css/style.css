@@ -158,6 +158,10 @@ button {
     .square h2 {
         font-size: 4rem;
     }
+
+    img {
+        scale: .8;
+    }
 }
 
 @media (max-width: 767px) {

@@ -55,7 +55,7 @@ async function chkAdmin() {
 }
 
 function updateCountDown() {
-  const targetDate = new Date('2023-09-24T23:59:59');
+  const targetDate = new Date('2023-09-27T21:00');
   const countdownElement = document.getElementById('countdown');
   const currentTime = new Date();
 
@@ -73,9 +73,41 @@ function updateCountDown() {
     );
     const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-    countdownElement.innerHTML = `Fyll i ditt namn för att anmäla dig. <br>
-        Anmälan stränger om ${days} dagar, ${hours} timmar, ${minutes} minuter och ${seconds} sekunder.`;
+    let daysAndHours;
+
+    if (days !== 0) {
+      daysAndHours = (days * 24) + hours;
+      countdownElement.innerHTML = `Fyll i ditt namn för att anmäla dig. <br>
+        Anmälan stränger om ${daysAndHours} timmar och ${minutes} minuter`;
+    } else if (days === 0 && hours > 1) {
+      daysAndHours = hours;
+      countdownElement.innerHTML = `Fyll i ditt namn för att anmäla dig. <br>
+        Anmälan stränger om ${daysAndHours} timmar och ${minutes} minuter`;
+    } else if (days === 0 && hours === 1) {
+      daysAndHours = hours;
+      countdownElement.innerHTML = `Fyll i ditt namn för att anmäla dig. <br>
+        Anmälan stränger om ${daysAndHours} timma och ${minutes} minuter`;
+    } else if (hours === 0) {
+      countdownElement.innerHTML = `Fyll i ditt namn för att anmäla dig. <br>
+        Anmälan stränger om ${minutes} minuter`;
+    }
   }
+
+  // if (timeDifference <= 0) {
+  //   countdownElement.textContent = 'Tiden är ute!';
+  // } else {
+  //   const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+  //   const hours = Math.floor(
+  //     (timeDifference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60)
+  //   );
+  //   const minutes = Math.floor(
+  //     (timeDifference % (1000 * 60 * 60)) / (1000 * 60)
+  //   );
+  //   const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
+
+  //   countdownElement.innerHTML = `Fyll i ditt namn för att anmäla dig. <br>
+  //       Anmälan stränger om ${days} dagar, ${hours} timmar, ${minutes} minuter och ${seconds} sekunder.`;
+  // }
 }
 
 function findUser(e) {
