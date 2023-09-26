@@ -47,9 +47,9 @@ function setUserName(e) {
 async function countGuests(numberOfGuests) {
   const numberEl = document.getElementById('guest-count');
 
-  // numberEl === 0
-  //   ? (numberEl.textContent = '0')
-  //   : (numberEl.textContent = numberOfGuests);
+  numberEl === 0
+    ? (numberEl.textContent = '0')
+    : (numberEl.textContent = numberOfGuests);
 }
 
 async function chkAdmin() {
