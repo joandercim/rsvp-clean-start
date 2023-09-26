@@ -4,6 +4,8 @@ async function getNames() {
   return guests;
 }
 
+
+
 async function renderNames() {
   document.querySelector('.guests').innerHTML = '';
   const guests = await getNames();
@@ -45,9 +47,9 @@ function setUserName(e) {
 async function countGuests(numberOfGuests) {
   const numberEl = document.getElementById('guest-count');
 
-  numberEl === 0
-    ? (numberEl.textContent = '0')
-    : (numberEl.textContent = numberOfGuests);
+  // numberEl === 0
+  //   ? (numberEl.textContent = '0')
+  //   : (numberEl.textContent = numberOfGuests);
 }
 
 async function chkAdmin() {
@@ -65,7 +67,8 @@ function updateCountDown() {
   const timeDifference = targetDate - currentTime;
 
   if (timeDifference <= 0) {
-    countdownElement.textContent = 'Tiden är ute!';
+    countdownElement.textContent = 'Anmälan är stängd.';
+    document.querySelector('form').style.display = 'none';
   } else {
     const days = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
     const hours = Math.floor(
@@ -78,20 +81,20 @@ function updateCountDown() {
 
     if (days !== 0 && hours === 1) {
       countdownElement.innerHTML = `Fyll i ditt namn för att anmäla dig. <br>
-        Anmälan stränger om ${days} dag, ${hours} timma och ${minutes} minuter`;
+        Anmälan stänger om ${days} dag, ${hours} timma och ${minutes} minuter`;
     } else if (days !== 0 && hours !== 1) {
       countdownElement.innerHTML = `Fyll i ditt namn för att anmäla dig. <br>
-        Anmälan stränger om ${hours} timmar och ${minutes} minuter`;
+        Anmälan stänger om ${hours} timmar och ${minutes} minuter`;
     } else if (days === 0 && hours > 1) {
       countdownElement.innerHTML = `Fyll i ditt namn för att anmäla dig. <br>
-        Anmälan stränger om ${hours} timmar och ${minutes} minuter`;
+        Anmälan stänger om ${hours} timmar och ${minutes} minuter`;
     } else if (days === 0 && hours === 1) {
       daysAndHours = hours;
       countdownElement.innerHTML = `Fyll i ditt namn för att anmäla dig. <br>
-        Anmälan stränger om ${hours} timma och ${minutes} minuter`;
+        Anmälan stänger om ${hours} timma och ${minutes} minuter`;
     } else if (hours === 0) {
       countdownElement.innerHTML = `Fyll i ditt namn för att anmäla dig. <br>
-        Anmälan stränger om ${minutes} minuter`;
+        Anmälan stänger om ${minutes} minuter`;
     }
   }
 }
