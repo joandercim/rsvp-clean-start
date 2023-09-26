@@ -10,7 +10,7 @@ async function renderNames() {
 
   guests.forEach((guest) => {
     const { username, _id } = guest;
-    
+
     const xmark = document.createElement('i');
     xmark.classList.add('fa-solid');
     xmark.classList.add('fa-xmark');
@@ -25,9 +25,11 @@ async function renderNames() {
 
     document.querySelector('.guests').appendChild(div);
     div.appendChild(h3);
-    div.appendChild(xmark)
+    div.appendChild(xmark);
     const userInStorage = localStorage.getItem('userName');
-    userInStorage === `"${username}"` ? xmark.style.visibility = 'visible' : xmark.style.visibility = 'hidden';
+    userInStorage === `"${username}"`
+      ? (xmark.style.visibility = 'visible')
+      : (xmark.style.visibility = 'hidden');
     countGuests(guests.length);
   });
 
@@ -43,8 +45,9 @@ function setUserName(e) {
 async function countGuests(numberOfGuests) {
   const numberEl = document.getElementById('guest-count');
 
-  numberEl === 0 ? numberEl.textContent = '0' : numberEl.textContent =
-  numberOfGuests;
+  numberEl === 0
+    ? (numberEl.textContent = '0')
+    : (numberEl.textContent = numberOfGuests);
 }
 
 async function chkAdmin() {
@@ -73,10 +76,12 @@ function updateCountDown() {
     );
     const seconds = Math.floor((timeDifference % (1000 * 60)) / 1000);
 
-
-    if (days !== 0) {
+    if (days !== 0 && hours === 1) {
       countdownElement.innerHTML = `Fyll i ditt namn för att anmäla dig. <br>
-        Anmälan stränger om ${days} dag, ${hours} timmar och ${minutes} minuter`;
+        Anmälan stränger om ${days} dag, ${hours} timma och ${minutes} minuter`;
+    } else if (days !== 0 && hours !== 1) {
+      countdownElement.innerHTML = `Fyll i ditt namn för att anmäla dig. <br>
+        Anmälan stränger om ${hours} timmar och ${minutes} minuter`;
     } else if (days === 0 && hours > 1) {
       countdownElement.innerHTML = `Fyll i ditt namn för att anmäla dig. <br>
         Anmälan stränger om ${hours} timmar och ${minutes} minuter`;
@@ -98,30 +103,30 @@ function findUser(e) {
     setTimeout(() => {
       renderNames();
     }, 199);
-  } 
+  }
 }
 
 async function deleteOwnName(id) {
   const username = localStorage.getItem('userName')
     ? localStorage.getItem('userName')
-      : '';
-    try {
-        const response = await fetch(`posts/${id}`, {
-            method: 'DELETE',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        });
+    : '';
+  try {
+    const response = await fetch(`posts/${id}`, {
+      method: 'DELETE',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+    });
 
-        if (!response.ok) {
-            throw new Error('Något gick fick, DELETE misslyckades');
-        }
-
-        const data = await response.json();
-        console.log('Delete Complete!')
-    } catch (error) {
-        console.log(error)
+    if (!response.ok) {
+      throw new Error('Något gick fick, DELETE misslyckades');
     }
+
+    const data = await response.json();
+    console.log('Delete Complete!');
+  } catch (error) {
+    console.log(error);
+  }
 }
 
 document.querySelector('form').addEventListener('submit', setUserName);
